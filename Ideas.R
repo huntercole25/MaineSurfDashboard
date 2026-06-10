@@ -33,7 +33,7 @@ Waves[,time := NULL]
 
 # Waves[,DateTime := as.character(DateTime)]
 
-# fwrite(Waves, "~/Documents/MaineSurfDashboard/HistoricLongSands.csv")
+# fwrite(Waves, "~/Documents/MaineSurfDashboard/Data/HistoricLongSands.csv")
 
 # Waves[,PrimaryEnergy := (swellHeight^2)*swellPeriod]
 
