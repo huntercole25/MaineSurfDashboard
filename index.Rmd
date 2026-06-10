@@ -26,10 +26,10 @@ Column {.tabset data-width=600}
 <iframe src="https://embed.cdn-surfline.com/cams/58349bf83421b20545c4b552/9dc9d328cfb3ab68ceb5385642adaa6cb6d58c77" height = "650" style="border: 1px solid #464646;width:100%" allowfullscreen="" allow="autoplay" data-external="1" loading="lazy"></iframe>
 
 ### Ogunquit Beach Cam
-<iframe src="https://v.angelcam.com/iframe?v=2dr627xxlk&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkb21haW4iOiJub3JzZW1hbi1yZXNvcnQtd2ViY2FtLmNsaWNrMnN0cmVhbS5jb20iLCJjYW1lcmFfaWQiOjc2MTUxLCJleHAiOjE3ODEwOTcyODJ9.PNhv0QN5JtbLUn_LEPcg_TOE7mpTjzMdEKPycPcH4rU&autoplay=1" height = "650" style="border: 1px solid #464646;width:100%" allowfullscreen="" allow="autoplay" data-external="1" loading="lazy"></iframe>
+<iframe src="https://e1-na8.angelcam.com/cameras/76151/streams/hls/playlist.m3u8?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9%2EeyJpYXQiOjE3ODExMDQ5MzEsIm5iZiI6MTc4MTEwNDgxMSwiZXhwIjoxNzgxMTEyMTMxLCJkaWQiOiI3NjE1MSJ9%2EgWt3FvhJlcUer0vOc%2D7QcnRLNLp2y4TcrrAyrrzf6wk" height = "650" style="border: 1px solid #464646;width:100%" allowfullscreen="" allow="autoplay" data-external="1" loading="lazy"></iframe>
 
 ### Ogunquit Rivermouth Cam
-<iframe height = "650" src="https://www.youtube.com/embed/K4L33nREQlc?si=5giVkbA2w_gWv6KC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen data-external="1" style="width:100%"></iframe>
+<iframe height = "650" src="https://www.youtube.com/embed/MKDCpheEBZg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen data-external="1" style="width:100%"></iframe>
 
 ### Wells Beach Cam
 <iframe src="https://v.angelcam.com/iframe?v=enl0eg5ny8" height = "650" style="border: 1px solid #464646;width:100%" allowfullscreen="" allow="autoplay" data-external="1" loading="lazy"></iframe>
