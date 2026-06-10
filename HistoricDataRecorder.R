@@ -33,6 +33,8 @@ res <- GET(
   )
 )
 
+if("errors" %in% names(fromJSON(content(res, "text", encoding = "UTF-8")))) stop(print(fromJSON(content(res, "text", encoding = "UTF-8"))$errors))
+
 Waves <- as.data.table(fromJSON(content(res, "text", encoding = "UTF-8"))$hours)
 
 Waves <- Waves[!is.na(swellHeight)]
