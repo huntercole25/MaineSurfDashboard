@@ -25,6 +25,7 @@ jobs:
             any::data.table
             any::lubridate
             any::tidyr
+            any::ggplot2
 
       - name: Run update script
         env:
