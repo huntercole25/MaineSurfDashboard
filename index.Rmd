@@ -28,8 +28,9 @@ library(lubridate)
 library(tidyr)
 library(ggplot2)
 
-# api_key <- Sys.getenv("STORMGLASS_KEY")
-api_key <- "bbc40e36-944b-11f0-a59f-0242ac130006-bbc40e90-944b-11f0-a59f-0242ac130006"
+ModWaves <- readRDS("/home/prm6/Documents/MaineSurfDashboard/Data/ModWavesExample.rds")
+
+api_key <- Sys.getenv("STORMGLASS_KEY")
 
 if (api_key == "") {
   stop("STORMGLASS_KEY not found")
@@ -79,7 +80,7 @@ Energy <- ggplot(ModWaves, aes(DateTime, PrimaryEnergyScore))+
   theme_classic()+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
-          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
 
 WaveHeight <- ggplot(ModWaves, aes(DateTime, waveHeight_ft))+
   # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
@@ -89,7 +90,7 @@ WaveHeight <- ggplot(ModWaves, aes(DateTime, waveHeight_ft))+
   theme_classic()+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
-          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
 
 SwellHeight <- ggplot(ModWaves, aes(DateTime, swellHeight_ft))+
  # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
@@ -99,7 +100,7 @@ SwellHeight <- ggplot(ModWaves, aes(DateTime, swellHeight_ft))+
   theme_classic()+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
-          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
 
 SwellPeriod <- ggplot(ModWaves, aes(DateTime, swellPeriod))+
   # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
@@ -109,7 +110,7 @@ SwellPeriod <- ggplot(ModWaves, aes(DateTime, swellPeriod))+
   theme_classic()+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
-          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
 
 WaterTemp <- ggplot(ModWaves, aes(DateTime, waterTemperature_f))+
   # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
@@ -119,7 +120,7 @@ WaterTemp <- ggplot(ModWaves, aes(DateTime, waterTemperature_f))+
   theme_classic()+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
-          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
 
 ```
 
@@ -156,28 +157,28 @@ sandbox="allow-scripts allow-same-origin" data-external="1"></iframe>
 Tide forecasts by <a href="https://www.sealegs.ai/tide-widget">SeaLegs</a>
 </p>
 
-### Wave Energy Forecast
-```{r}
+### Swell Energy Forecast
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100}
 Energy
 ```
 
 ### Wave Height Forecast
-```{r}
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100}
 WaveHeight
 ```
 
 ### Swell Height Forecast
-```{r}
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100}
 SwellHeight
 ```
 
 ### Swell Period Forecast
-```{r}
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100}
 SwellPeriod
 ```
 
 ### Water Temp. Forecast
-```{r}
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100}
 WaterTemp
 ```
 
