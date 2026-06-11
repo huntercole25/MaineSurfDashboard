@@ -2,7 +2,7 @@ name: Long Sands Historic Data Download
 
 on:
   schedule:
-    - cron: '0 0 * * 5'   # Fridays
+    - cron: '0 5 * * *'
   workflow_dispatch:
 
 jobs:
