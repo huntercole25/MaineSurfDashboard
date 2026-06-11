@@ -76,7 +76,7 @@ Energy <- ggplot(ModWaves, aes(DateTime, PrimaryEnergyScore))+
   theme_classic()+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
-          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
 
 WaveHeight <- ggplot(ModWaves, aes(DateTime, waveHeight_ft))+
   geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
@@ -86,7 +86,7 @@ WaveHeight <- ggplot(ModWaves, aes(DateTime, waveHeight_ft))+
   theme_classic()+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
-          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
 
 SwellHeight <- ggplot(ModWaves, aes(DateTime, swellHeight_ft))+
   geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
@@ -96,7 +96,7 @@ SwellHeight <- ggplot(ModWaves, aes(DateTime, swellHeight_ft))+
   theme_classic()+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
-          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
 
 SwellPeriod <- ggplot(ModWaves, aes(DateTime, swellPeriod))+
   geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
@@ -106,7 +106,7 @@ SwellPeriod <- ggplot(ModWaves, aes(DateTime, swellPeriod))+
   theme_classic()+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
-          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
 
 WaterTemp <- ggplot(ModWaves, aes(DateTime, waterTemperature_f))+
   geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
@@ -116,7 +116,7 @@ WaterTemp <- ggplot(ModWaves, aes(DateTime, waterTemperature_f))+
   theme_classic()+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
-          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
 
 ```
 
