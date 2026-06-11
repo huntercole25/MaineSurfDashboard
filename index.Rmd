@@ -46,7 +46,8 @@ res <- GET(
   query = list(
     lat = 43.163338,
     lng = -70.615757,
-    params = "swellDirection,swellHeight,swellPeriod,secondarySwellDirection,secondarySwellHeight,secondarySwellPeriod,waterTemperature,waveDirection,waveHeight,wavePeriod,windWaveDirection,windWaveHeight,windWavePeriod,currentDirection,currentSpeed,windSpeed,windDirection"
+    params = "swellDirection,swellHeight,swellPeriod,secondarySwellDirection,secondarySwellHeight,secondarySwellPeriod,waterTemperature,waveDirection,waveHeight,wavePeriod,windWaveDirection,windWaveHeight,windWavePeriod,currentDirection,currentSpeed,windSpeed,windDirection",
+    source = "sg"
   )
 )
 
@@ -56,8 +57,10 @@ Waves[,DateTime := with_tz(ymd_hms(time), "America/New_York")]
 
 Waves[,time := NULL]
 
-ModWaves <- as.data.table(pivot_wider(pivot_longer(Waves, 1:(length(Waves)-1), names_pattern = "(^[[:alpha:]]+)\\.(.+$)",
-                                                   names_to = c("Metric", "Model")), names_from = "Metric", values_from = "value"))
+ModWaves <- Waves
+
+# ModWaves <- as.data.table(pivot_wider(pivot_longer(Waves, 1:(length(Waves)-1), names_pattern = "(^[[:alpha:]]+)\\.(.+$)",
+#                                                    names_to = c("Metric", "Model")), names_from = "Metric", values_from = "value"))
 
 ModWaves[,swellHeight_ft := swellHeight*3.28084]
 ModWaves[,waveHeight_ft := waveHeight*3.28084]
@@ -69,8 +72,8 @@ ModWaves[,waterTemperature_f := waterTemperature*(9/5)+32]
 ModWaves[,PrimaryEnergyScore := (swellHeight^2)*swellPeriod]
 
 Energy <- ggplot(ModWaves, aes(DateTime, PrimaryEnergyScore))+
-  geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
-  geom_line(aes(color = Model), alpha = 0.3, linewidth = 0.75)+
+  # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
+  geom_line(linewidth = 1.5, color = "#006D75")+
   scale_x_datetime(date_breaks = "24 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "4 hours")+
   labs(x = "Time", y = "Energy Score")+
   theme_classic()+
@@ -79,8 +82,8 @@ Energy <- ggplot(ModWaves, aes(DateTime, PrimaryEnergyScore))+
           legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
 
 WaveHeight <- ggplot(ModWaves, aes(DateTime, waveHeight_ft))+
-  geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
-  geom_line(aes(color = Model), alpha = 0.3, linewidth = 0.75)+
+  # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
+  geom_line(linewidth = 1.5, color = "#006D75")+
   scale_x_datetime(date_breaks = "24 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "4 hours")+
   labs(x = "Time", y = "Wave Height (ft)")+
   theme_classic()+
@@ -89,8 +92,8 @@ WaveHeight <- ggplot(ModWaves, aes(DateTime, waveHeight_ft))+
           legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
 
 SwellHeight <- ggplot(ModWaves, aes(DateTime, swellHeight_ft))+
-  geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
-  geom_line(aes(color = Model), alpha = 0.3, linewidth = 0.75)+
+ # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
+  geom_line(linewidth = 1.5, color = "#006D75")+
   scale_x_datetime(date_breaks = "24 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "4 hours")+
   labs(x = "Time", y = "Swell Height (ft)")+
   theme_classic()+
@@ -99,8 +102,8 @@ SwellHeight <- ggplot(ModWaves, aes(DateTime, swellHeight_ft))+
           legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
 
 SwellPeriod <- ggplot(ModWaves, aes(DateTime, swellPeriod))+
-  geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
-  geom_line(aes(color = Model), alpha = 0.3, linewidth = 0.75)+
+  # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
+  geom_line(linewidth = 1.5, color = "#006D75")+
   scale_x_datetime(date_breaks = "24 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "4 hours")+
   labs(x = "Time", y = "Swell Period (s)")+
   theme_classic()+
@@ -109,8 +112,8 @@ SwellPeriod <- ggplot(ModWaves, aes(DateTime, swellPeriod))+
           legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"), aspect.ratio = 0.5625)
 
 WaterTemp <- ggplot(ModWaves, aes(DateTime, waterTemperature_f))+
-  geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
-  # geom_line(aes(color = Model), alpha = 0.3, linewidth = 1)+
+  # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
+  geom_line(linewidth = 1.5, color = "#006D75")+
   scale_x_datetime(date_breaks = "24 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "4 hours")+
   labs(x = "Time", y = "Water Temp. (F)")+
   theme_classic()+
