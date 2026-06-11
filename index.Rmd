@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 title: Maine Surf Dashboard
 ---
 
-```{r}
+```{r, echo=FALSE}
 library(httr)
 library(jsonlite)
 library(data.table)
@@ -158,27 +158,27 @@ Tide forecasts by <a href="https://www.sealegs.ai/tide-widget">SeaLegs</a>
 </p>
 
 ### Swell Energy Forecast
-```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100}
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
 Energy
 ```
 
 ### Wave Height Forecast
-```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100}
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
 WaveHeight
 ```
 
 ### Swell Height Forecast
-```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100}
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
 SwellHeight
 ```
 
 ### Swell Period Forecast
-```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100}
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
 SwellPeriod
 ```
 
 ### Water Temp. Forecast
-```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100}
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
 WaterTemp
 ```
 
