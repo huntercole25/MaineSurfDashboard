@@ -58,16 +58,42 @@ ggplot(ModWaves, aes(DateTime, PrimaryEnergyScore))+
   scale_x_datetime(date_breaks = "8 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "2 hours")+
   labs(x = "Time", y = "Energy Score")+
   theme_classic()+
-  theme(axis.text.x = element_text(angle = 60, hjust = 1), panel.grid.major.x = element_line(color = "grey85"), panel.grid.minor.x = element_line(color = "grey92"))
+  theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey85"), panel.grid.minor.x = element_line(color = "grey92"),
+        panel.background = element_blank(), axis.line = element_line(color = "grey85"), axis.ticks = element_line(color = "grey85"))
 
-ggplot(ModWaves, aes(DateTime, waveHeight_ft, color = Model))+
-  geom_line()
+ggplot(ModWaves, aes(DateTime, waveHeight_ft))+
+  geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
+  geom_line(aes(color = Model), alpha = 0.3, linewidth = 1)+
+  scale_x_datetime(date_breaks = "8 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "2 hours")+
+  labs(x = "Time", y = "Energy Score")+
+  theme_classic()+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey85"), panel.grid.minor.x = element_line(color = "grey92"),
+        panel.background = element_blank(), axis.line = element_line(color = "grey85"), axis.ticks = element_line(color = "grey85"))
 
-ggplot(ModWaves, aes(DateTime, swellHeight_ft, color = Model))+
-  geom_line()
+ggplot(ModWaves, aes(DateTime, swellHeight_ft))+
+  geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
+  geom_line(aes(color = Model), alpha = 0.3, linewidth = 1)+
+  scale_x_datetime(date_breaks = "8 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "2 hours")+
+  labs(x = "Time", y = "Energy Score")+
+  theme_classic()+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey85"), panel.grid.minor.x = element_line(color = "grey92"),
+        panel.background = element_blank(), axis.line = element_line(color = "grey85"), axis.ticks = element_line(color = "grey85"))
 
-ggplot(ModWaves, aes(DateTime, windWaveHeight_ft, color = Model))+
-  geom_line()
+ggplot(ModWaves, aes(DateTime, swellPeriod))+
+  geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
+  geom_line(aes(color = Model), alpha = 0.3, linewidth = 1)+
+  scale_x_datetime(date_breaks = "8 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "2 hours")+
+  labs(x = "Time", y = "Energy Score")+
+  theme_classic()+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey85"), panel.grid.minor.x = element_line(color = "grey92"),
+        panel.background = element_blank(), axis.line = element_line(color = "grey85"), axis.ticks = element_line(color = "grey85"))
 
-ggplot(ModWaves, aes(DateTime, waterTemperature_f, color = Model))+
-  geom_line()
+
+ggplot(ModWaves, aes(DateTime, waterTemperature_f))+
+  geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
+  # geom_line(aes(color = Model), alpha = 0.3, linewidth = 1)+
+  scale_x_datetime(date_breaks = "8 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "2 hours")+
+  labs(x = "Time", y = "Energy Score")+
+  theme_classic()+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey85"), panel.grid.minor.x = element_line(color = "grey92"),
+        panel.background = element_blank(), axis.line = element_line(color = "grey85"), axis.ticks = element_line(color = "grey85"))
