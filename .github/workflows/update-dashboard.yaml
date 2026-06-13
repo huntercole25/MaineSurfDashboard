@@ -41,6 +41,8 @@ jobs:
           fi
 
       - name: Render dashboard
+        env:
+            STORMGLASS_KEY: ${{ secrets.STORMGLASS_KEY }}
         run: |
           Rscript -e "rmarkdown::render('index.Rmd', output_file = 'index.html')"
 
