@@ -28,6 +28,18 @@ jobs:
         with:
           cache-version: 1
 
+      - name: Check secret exists
+        env:
+          STORMGLASS_KEY: ${{ secrets.STORMGLASS_KEY }}
+        run: |
+          if [ -z "$STORMGLASS_KEY" ]; then
+            echo "SECRET IS EMPTY"
+            exit 1
+          else
+            echo "SECRET EXISTS"
+             echo "Length: ${#STORMGLASS_KEY}"
+          fi
+
       - name: Render dashboard
         run: |
           Rscript -e "rmarkdown::render('index.Rmd', output_file = 'index.html')"
