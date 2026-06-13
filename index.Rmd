@@ -28,7 +28,7 @@ library(lubridate)
 library(tidyr)
 library(ggplot2)
 
-ModWaves <- readRDS("/home/prm6/Documents/MaineSurfDashboard/Data/ModWavesExample.rds")
+# ModWaves <- readRDS("/home/prm6/Documents/MaineSurfDashboard/Data/ModWavesExample.rds")
 
 api_key <- Sys.getenv("STORMGLASS_KEY")
 
@@ -71,6 +71,8 @@ ModWaves[,secondarySwellHeight_ft := secondarySwellHeight*3.28084]
 ModWaves[,waterTemperature_f := waterTemperature*(9/5)+32]
 
 ModWaves[,PrimaryEnergyScore := (swellHeight^2)*swellPeriod]
+
+ModWaves[,Date := date(DateTime)]
 
 Energy <- ggplot(ModWaves, aes(DateTime, PrimaryEnergyScore))+
   # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
@@ -121,6 +123,32 @@ WaterTemp <- ggplot(ModWaves, aes(DateTime, waterTemperature_f))+
   theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
         panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
           legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
+
+SwellDir <- ggplot(ModWaves, aes(swellDirection, DateTime))+
+  coord_radial(start = 0, end = 2*pi, clip = "off", expand = F, thetalim = c(0, 360))+
+  geom_point(alpha = 0.7, aes(color = swellHeight_ft))+
+  scale_x_continuous(breaks = seq(0, 360, 90))+
+  scale_y_datetime(date_breaks = "4 hours", date_minor_breaks = "2 hours", date_labels = "%I %p")+
+  facet_wrap(vars(Date), scales = "free_y")+
+    theme_classic()+
+  labs(x = "Swell Direction", y = "Time", color = "Swell Height (ft)")+
+  theme(text = element_text(color = "white"), panel.grid.major = element_line(color = "grey30"), panel.grid.minor = element_line(color = "grey20"),
+        panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"),
+        strip.background = element_rect(fill = "grey30"), strip.text = element_text(color = "white", face = "bold"))
+
+WindDir <- ggplot(ModWaves, aes(windDirection*2.237, DateTime))+
+  coord_radial(start = 0, end = 2*pi, clip = "off", expand = F, thetalim = c(0, 360))+
+  geom_point(alpha = 0.7, aes(color = windSpeed))+
+  scale_x_continuous(breaks = seq(0, 360, 90))+
+  scale_y_datetime(date_breaks = "4 hours", date_minor_breaks = "2 hours", date_labels = "%I %p")+
+  facet_wrap(vars(Date), scales = "free_y")+
+    theme_classic()+
+  labs(x = "Wind Direction", y = "Time", color = "Wind Speed (MPH)")+
+  theme(text = element_text(color = "white"), panel.grid.major = element_line(color = "grey30"), panel.grid.minor = element_line(color = "grey20"),
+        panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"),
+        strip.background = element_rect(fill = "grey30"), strip.text = element_text(color = "white", face = "bold"))
 
 ```
 
@@ -175,6 +203,16 @@ SwellHeight
 ### Swell Period Forecast
 ```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
 SwellPeriod
+```
+
+### Swell Direction Forecast
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
+SwellDir
+```
+
+### Wind Direction Forecast
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
+WindDir
 ```
 
 ### Water Temp. Forecast
