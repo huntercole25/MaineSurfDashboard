@@ -211,12 +211,12 @@ SwellDir
 ```
 
 ### Wind Direction Forecast
-```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
+```{r fig.height = 7.25, fig.width = 12, fig.dpi = 100, echo=FALSE}
 WindDir
 ```
 
 ### Water Temp. Forecast
-```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
+```{r fig.height = 7.25, fig.width = 12, fig.dpi = 100, echo=FALSE}
 WaterTemp
 ```
 
