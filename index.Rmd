@@ -71,10 +71,21 @@ ModWaves[,secondarySwellHeight_ft := secondarySwellHeight*3.28084]
 ModWaves[,waterTemperature_f := waterTemperature*(9/5)+32]
 
 ModWaves[,PrimaryEnergyScore := (swellHeight^2)*swellPeriod]
+ModWaves[,WaveEnergyScore := (waveHeight^2)*wavePeriod]
 
 ModWaves[,Date := date(DateTime)]
 
 Energy <- ggplot(ModWaves, aes(DateTime, PrimaryEnergyScore))+
+  # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
+  geom_line(linewidth = 1.5, color = "#006D75")+
+  scale_x_datetime(date_breaks = "24 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "4 hours")+
+  labs(x = "Time", y = "Energy Score")+
+  theme_classic()+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1), text = element_text(color = "white"), panel.grid.major.x = element_line(color = "grey30"), panel.grid.minor.x = element_line(color = "grey20"),
+        panel.background = element_rect(fill = "#101010"), plot.background = element_rect(fill = "#101010"),
+          legend.background = element_rect(fill = "#101010"), axis.line = element_line(color = "grey30"), axis.ticks = element_line(color = "grey85"))
+
+WaveEnergy <- ggplot(ModWaves, aes(DateTime, WaveEnergyScore))+
   # geom_smooth(span = 0.05, method = "loess", se = F, linewidth = 1.5)+
   geom_line(linewidth = 1.5, color = "#006D75")+
   scale_x_datetime(date_breaks = "24 hours", date_labels = "%b %d (%a) %I%p", date_minor_breaks = "4 hours")+
@@ -185,14 +196,19 @@ sandbox="allow-scripts allow-same-origin" data-external="1"></iframe>
 Tide forecasts by <a href="https://www.sealegs.ai/tide-widget">SeaLegs</a>
 </p>
 
-### Swell Energy Forecast
+### Wave Energy Forecast
 ```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
-Energy
+WaveEnergy
 ```
 
 ### Wave Height Forecast
 ```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
 WaveHeight
+```
+
+### Swell Energy Forecast
+```{r fig.height = 5.4375, fig.width = 9, fig.dpi = 100, echo=FALSE}
+Energy
 ```
 
 ### Swell Height Forecast
